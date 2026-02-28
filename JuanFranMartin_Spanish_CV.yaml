@@ -51,7 +51,7 @@ cv:
           - Usé AWS Lambda para scrapers, CloudWatch para la observabilidad y S3 para el almacenamiento de CSV y JSON.
           - Implementé de soluciones avanzadas de bypass para hCaptcha, reCAPTCHA y sistemas antibots.
           - Extraje información del DOM, de APIs o PDFs.
-          - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions ·
+          - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
             Playwright, Pandas, Redis, Pytest"
       - company: Tirant Lo Blanch
         position: Ingeniero de Web Scraping

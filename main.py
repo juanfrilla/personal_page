@@ -258,49 +258,40 @@ with header_container:
             st.session_state.lang = selected_lang
             st.rerun()
 
-# --- 3. TÍTULO Y RESTO DEL CONTENIDO ---
-st.title(cv["name"])
-st.subheader(cv.get("headline", ""))
+col_text, col_photo = st.columns([4, 1])
 
-st.markdown(
-    f"""
-    <div class="contact-info">
-        📍 {cv.get("location", "")} &nbsp; | &nbsp; ✉️ {cv.get("email", "")}
-    </div>
-""",
-    unsafe_allow_html=True,
-)
+with col_text:
+    # Título y Headline pegados
+    st.title(cv["name"])
+    st.subheader(cv.get("headline", ""))
 
+    # Info de contacto y Links en la misma línea para ahorrar espacio
+    links = [f"📍 {cv.get('location', '')}", f"✉️ {cv.get('email', '')}"]
+    for sn in cv.get("social_networks", []):
+        links.append(
+            f"[{sn['network']}](https://{sn['network'].lower()}.com/{sn['username']})"
+        )
 
-col_btn, col_links, col_photo = st.columns([1.2, 3, 0.8])
+    st.markdown("  |  ".join(links))
 
-with col_btn:
-    st.write(
-        "##"
-    )  # Alineación vertical para compensar el st.title de la columna de al lado
+    # El botón de descarga justo debajo de los links, sin espacios extra
     pdf_data = generate_and_get_pdf()
     if pdf_data:
+        # No usamos use_container_width aquí para que no ocupe todo el ancho
+        # y se vea más minimalista, solo el tamaño del texto.
         st.download_button(
             label=L["download"],
             data=pdf_data,
             file_name=os.path.basename(output_pdf),
             mime="application/pdf",
             type="primary",
-            use_container_width=True,
             key=f"dl_header_{st.session_state.lang}",
         )
-
-with col_links:
-    links = []
-    for sn in cv.get("social_networks", []):
-        links.append(
-            f"[{sn['network']}](https://{sn['network'].lower()}.com/{sn['username']})"
-        )
-    st.markdown("  |  ".join(links))
 
 with col_photo:
     photo_path = cv.get("photo", "").lstrip("./")
     if photo_path and Path(photo_path).exists():
+        # "use_container_width" asegura que se ajuste al 1 de la columna
         st.image(photo_path, width="content")
 
 st.markdown("---")
