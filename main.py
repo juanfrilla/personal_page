@@ -6,8 +6,6 @@ import streamlit as st
 import yaml
 from language_detection import detect_browser_language
 
-st.set_page_config(page_title="Juan Francisco Martin", page_icon="💻", layout="wide")
-
 if "lang" not in st.session_state:
     browser_lang = detect_browser_language()
     st.session_state.lang = (
@@ -243,15 +241,26 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+header_container = st.container()
+with header_container:
+    col_spacer, col_sw = st.columns([4, 1])
+    with col_sw:
+        selected_lang = st.segmented_control(
+            label="Lang",
+            options=["en", "es"],
+            format_func=lambda x: "EN" if x == "en" else "ES",
+            selection_mode="single",
+            default=st.session_state.lang,
+            label_visibility="collapsed",
+            key="lang_selector",
+        )
+        if selected_lang != st.session_state.lang:
+            st.session_state.lang = selected_lang
+            st.rerun()
 
-col_head, col_sw = st.columns([4, 1])
-with col_sw:
-    if st.button(L["switch"]):
-        st.session_state.lang = L["new_lang"]
-        st.rerun()
-with col_head:
-    st.title(cv["name"])
-    st.subheader(cv.get("headline", ""))
+# --- 3. TÍTULO Y RESTO DEL CONTENIDO ---
+st.title(cv["name"])
+st.subheader(cv.get("headline", ""))
 
 st.markdown(
     f"""
@@ -262,7 +271,25 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-col_links, col_photo = st.columns([3, 1])
+
+col_btn, col_links, col_photo = st.columns([1.2, 3, 0.8])
+
+with col_btn:
+    st.write(
+        "##"
+    )  # Alineación vertical para compensar el st.title de la columna de al lado
+    pdf_data = generate_and_get_pdf()
+    if pdf_data:
+        st.download_button(
+            label=L["download"],
+            data=pdf_data,
+            file_name=os.path.basename(output_pdf),
+            mime="application/pdf",
+            type="primary",
+            use_container_width=True,
+            key=f"dl_header_{st.session_state.lang}",
+        )
+
 with col_links:
     links = []
     for sn in cv.get("social_networks", []):
@@ -275,17 +302,6 @@ with col_photo:
     photo_path = cv.get("photo", "").lstrip("./")
     if photo_path and Path(photo_path).exists():
         st.image(photo_path, width="content")
-
-
-st.markdown("---")
-
-st.download_button(
-    label=L["download"],
-    data=generate_and_get_pdf,
-    file_name=os.path.basename(output_pdf),
-    mime="application/pdf",
-    type="primary",
-)
 
 st.markdown("---")
 
