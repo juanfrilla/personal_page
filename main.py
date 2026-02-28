@@ -113,12 +113,21 @@ st.markdown(
 
     .stApp { background-color: #ffffff; color: #1f2328; }
 
+    /* --- CENTRADO Y LIMITACIÓN DE ANCHO --- */
+    .block-container {
+        max-width: 1000px !important;
+        padding-top: 2rem !important;
+        padding-bottom: 5rem !important;
+        margin: auto;
+    }
+
     html, body, [class*="css"], .stMarkdown, p, li, label {
         font-family: 'Inter', sans-serif !important;
         color: #444d56 !important;
         font-size: 0.95rem !important;
         line-height: 1.6 !important;
     }
+    
     h1 {
         font-family: 'Inter', sans-serif !important;
         font-weight: 700 !important;
@@ -126,11 +135,13 @@ st.markdown(
         letter-spacing: -0.02em !important;
         margin-bottom: 0px !important;
     }
+    
     h2, h3 {
         font-family: 'Inter', sans-serif !important;
         font-weight: 600 !important;
         color: #1f2328 !important;
     }
+    
     .section-title {
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.8rem !important;
@@ -143,6 +154,7 @@ st.markdown(
         margin-top: 2.5rem !important;
         margin-bottom: 1.5rem !important;
     }
+    
     .streamlit-expanderHeader {
         font-family: 'Inter', sans-serif !important;
         background-color: #f6f8fa !important;
@@ -150,12 +162,14 @@ st.markdown(
         border-radius: 6px !important;
         color: #1f2328 !important;
     }
+    
     .streamlit-expanderContent {
         background-color: #ffffff !important;
         border: 1px solid #d0d7de !important;
         border-top: none !important;
         border-radius: 0 0 6px 6px !important;
     }
+    
     .tag {
         display: inline-block;
         background: #ddf4ff;
@@ -167,11 +181,13 @@ st.markdown(
         font-size: 0.75rem;
         font-family: 'JetBrains Mono', monospace !important;
     }
+    
     .entry-meta {
         color: #636c76 !important;
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.8rem !important;
     }
+    
     .stDownloadButton > button, .stButton > button {
         background-color: #f6f8fa !important;
         color: #24292f !important;
@@ -180,23 +196,38 @@ st.markdown(
         font-family: 'Inter', sans-serif !important;
         font-size: 0.8rem !important;
         transition: 0.2s;
+        width: auto; /* Evita que el botón ocupe todo el ancho */
     }
+    
     .stDownloadButton > button:hover, .stButton > button:hover {
         background-color: #ebf0f4 !important;
         border-color: #afb8c1 !important;
     }
+    
     .contact-info {
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.85rem !important;
         color: #0969da !important;
         margin: 10px 0px;
     }
+    
     img { border-radius: 50%; border: 2px solid #d0d7de !important; }
+    
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #ffffff; }
     ::-webkit-scrollbar-thumb { background: #d0d7de; border-radius: 10px; }
+    
     hr { border-color: #d0d7de !important; }
+    
     #MainMenu, footer { visibility: hidden; }
+
+    /* Ajuste para móviles: que use el 90% de la pantalla */
+    @media (max-width: 800px) {
+        .block-container {
+            max-width: 90% !important;
+            padding: 1rem !important;
+        }
+    }
 </style>
 """,
     unsafe_allow_html=True,
