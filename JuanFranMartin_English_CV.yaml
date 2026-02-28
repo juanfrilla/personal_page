@@ -31,7 +31,7 @@ cv:
         degree: BS
         start_date: 2012-09
         end_date: 2019-07
-        location: Tafira, Spain
+        location: Gran Canaria, Spain
         highlights:
           - "GPA: 7/10"
           - "Technologies: Java, Matlab, C, Assembly, MySQL"
@@ -48,8 +48,7 @@ cv:
           - Reverse engineered complex javascript using DevTools to automate MFA/2FA/JWT/OAUTH2 authentication flows.
           - Configured Selenium Grid and Scrapoxy (proxy network), on AWS EC2 with Docker, and Github Actions via SSH.
           - Conected Playwright with Selenium Grid to support browser-based distributed and parallelized scraping tasks.
-          - Used AWS Lambda for scrapers, CloudWatch for observability, and S3 for CSV and JSON storage.
-          - Implemented advanced bypass solutions for hCaptcha, reCAPTCHA, and anti-bot systems.
+          - I used AWS, that is, Lambda with Serverless architecture for scalable scraping, CloudWatch for observability, and S3 for CSV and JSON storage.          - Implemented advanced bypass solutions for hCaptcha, reCAPTCHA, and anti-bot systems.
           - Extracted information from the DOM, APIs, or PDFs.
           - "Technologies: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
             Playwright, Pandas, Redis, Pytest"

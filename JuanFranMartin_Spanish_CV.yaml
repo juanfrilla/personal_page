@@ -31,7 +31,7 @@ cv:
         degree: Grado
         start_date: 2012-09
         end_date: 2019-07
-        location: Tafira, España
+        location: Gran Canaria, España
         highlights:
           - "Nota: 7/10"
           - "Tecnologías: Java, Matlab, C, Ensamblador, MySQL"
@@ -44,11 +44,11 @@ cv:
         location: Asturias, España (Remoto)
         summary:
         highlights:
-          - Integré y mantuve scrapers para obtener datos financieros de bancos o brokers.
+          - Integré y mantuve scrapers para obtener datos financieros de bancos o brókers.
           - Realicé ingeniería inversa de JavaScript complejo con DevTools para automatizar los flujos de autenticación MFA/2FA/JWT/OAUTH2.
           - Configuré Selenium Grid y Scrapoxy (red de proxies interna) en AWS EC2 con Docker y Github Actions mediante SSH.
           - Conecté Playwright con Selenium Grid para soportar tareas de scraping distribuidas y paralelizadas.
-          - Usé AWS Lambda para scrapers, CloudWatch para la observabilidad y S3 para el almacenamiento de CSV y JSON.
+          - Usé AWS, esto es Lambda con arquitectura Serverless para scraping escalable, CloudWatch para la observabilidad y S3 para el almacenamiento de CSV y JSON.
           - Implementé de soluciones avanzadas de bypass para hCaptcha, reCAPTCHA y sistemas antibots.
           - Extraje información del DOM, de APIs o PDFs.
           - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
