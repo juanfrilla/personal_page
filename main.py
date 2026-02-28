@@ -60,17 +60,14 @@ output_pdf = (
 
 def generate_and_get_pdf():
     """Genera el PDF con rendercv y devuelve los bytes para descarga directa."""
-    try:
-        subprocess.run(
-            ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-        return Path(output_pdf).read_bytes()
-    except subprocess.CalledProcessError as e:
-        st.error(f"Error generating PDF: {e.stderr}")
-        return None
+    result = subprocess.run(
+        ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"rendercv failed:\n{result.stderr}")
+    return Path(output_pdf).read_bytes()
 
 
 @st.cache_data

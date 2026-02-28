@@ -1,0 +1,4 @@
+streamlit
+pyyaml
+"rendercv[full]"
+streamlit-browser-language
