@@ -115,16 +115,17 @@ st.markdown(
 
     /* --- CENTRADO Y LIMITACIÓN DE ANCHO --- */
     .block-container {
-        max-width: 1000px !important;
+        max-width: 1300px !important;
         padding-top: 2rem !important;
         padding-bottom: 5rem !important;
         margin: auto;
     }
 
+    /* Aumentado de 0.95rem a 1.05rem para mejor legibilidad */
     html, body, [class*="css"], .stMarkdown, p, li, label {
         font-family: 'Inter', sans-serif !important;
         color: #444d56 !important;
-        font-size: 0.95rem !important;
+        font-size: 1.05rem !important;
         line-height: 1.6 !important;
     }
     
@@ -132,6 +133,7 @@ st.markdown(
         font-family: 'Inter', sans-serif !important;
         font-weight: 700 !important;
         color: #1f2328 !important;
+        font-size: 2.5rem !important; /* Ajuste para el H1 */
         letter-spacing: -0.02em !important;
         margin-bottom: 0px !important;
     }
@@ -142,9 +144,10 @@ st.markdown(
         color: #1f2328 !important;
     }
     
+    /* Aumentado de 0.8rem a 0.9rem */
     .section-title {
         font-family: 'JetBrains Mono', monospace !important;
-        font-size: 0.8rem !important;
+        font-size: 0.9rem !important;
         font-weight: 600 !important;
         text-transform: uppercase;
         letter-spacing: 0.1em;
@@ -161,6 +164,7 @@ st.markdown(
         border: 1px solid #d0d7de !important;
         border-radius: 6px !important;
         color: #1f2328 !important;
+        font-size: 1rem !important;
     }
     
     .streamlit-expanderContent {
@@ -170,33 +174,36 @@ st.markdown(
         border-radius: 0 0 6px 6px !important;
     }
     
+    /* Aumentado de 0.75rem a 0.85rem */
     .tag {
         display: inline-block;
         background: #ddf4ff;
         color: #0969da !important;
         border: 1px solid #54aeff66;
         border-radius: 12px;
-        padding: 0px 10px;
+        padding: 2px 12px;
         margin: 2px;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         font-family: 'JetBrains Mono', monospace !important;
     }
     
     .entry-meta {
         color: #636c76 !important;
         font-family: 'JetBrains Mono', monospace !important;
-        font-size: 0.8rem !important;
+        font-size: 0.85rem !important;
     }
     
+    /* Botones ligeramente más grandes */
     .stDownloadButton > button, .stButton > button {
         background-color: #f6f8fa !important;
         color: #24292f !important;
         border: 1px solid #d0d7de !important;
         border-radius: 6px !important;
         font-family: 'Inter', sans-serif !important;
-        font-size: 0.8rem !important;
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
         transition: 0.2s;
-        width: auto; /* Evita que el botón ocupe todo el ancho */
+        width: auto;
     }
     
     .stDownloadButton > button:hover, .stButton > button:hover {
@@ -206,7 +213,7 @@ st.markdown(
     
     .contact-info {
         font-family: 'JetBrains Mono', monospace !important;
-        font-size: 0.85rem !important;
+        font-size: 0.95rem !important;
         color: #0969da !important;
         margin: 10px 0px;
     }
@@ -221,11 +228,14 @@ st.markdown(
     
     #MainMenu, footer { visibility: hidden; }
 
-    /* Ajuste para móviles: que use el 90% de la pantalla */
+    /* Ajuste para móviles */
     @media (max-width: 800px) {
         .block-container {
-            max-width: 90% !important;
+            max-width: 95% !important;
             padding: 1rem !important;
+        }
+        html, body, [class*="css"], .stMarkdown, p, li, label {
+            font-size: 1rem !important;
         }
     }
 </style>
