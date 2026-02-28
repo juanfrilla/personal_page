@@ -1,0 +1,192 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.6/schema.json
+cv:
+  name: Juan Francisco Martin
+  document_title: JF_Software_Spanish # <--- Cambia esto
+  headline: Ingeniero de Software
+  location: Teguise, Islas Canarias, España
+  email: juanframaro@gmail.com
+  photo: ./pIMG_9795.jpg
+  phone: "+34 683593896"
+  website: https://juanfrilla.github.io/
+  social_networks:
+    - network: LinkedIn
+      username: jfmozaga
+    - network: GitHub
+      username: juanfrilla
+  custom_connections:
+  sections:
+    sumario:
+      - Ingeniero de software especializado en web scraping y desarrollo back-end. Experiencia en AWS, CI/CD y bases de datos SQL/NoSQL, además de evasiones anti-bot avanzadas. Actualmente, estoy ampliando mi experiencia en ingeniería inversa de JavaScript complejo para abordar entornos web altamente ofuscados.
+    educación:
+      - institution: Escuela de Organización Industrial (EOI)
+        area: en Programación Web Full-Stack
+        degree: Bootcamp
+        start_date: 2021-09
+        end_date: 2021-12
+        location: Madrid, España (Remoto)
+        highlights:
+          - "Tecnologías: HTML, CSS, JavaScript, Node, Go, MySQL, MongoDB, Docker, Linux, CI/CD, Git, DigitalOcean"
+      - institution: Universidad de Las Palmas de Gran Canaria (ULPGC)
+        area: en Ingeniería en Telecommunicaciones
+        degree: Grado
+        start_date: 2012-09
+        end_date: 2019-07
+        location: Tafira, España
+        highlights:
+          - "Nota: 7/10"
+          - "Tecnologías: Java, Matlab, C, Ensamblador, MySQL"
+    experiencia:
+      - company: Vumi.io
+        position: Ingeniero de Web Scraping
+        date:
+        start_date: 2024-11
+        end_date: 2025-11
+        location: Asturias, España (Remoto)
+        summary:
+        highlights:
+          - Integré y mantuve scrapers para obtener datos financieros de bancos o brokers.
+          - Realicé ingeniería inversa de JavaScript complejo con DevTools para automatizar los flujos de autenticación MFA/2FA/JWT/OAUTH2.
+          - Configuré Selenium Grid y Scrapoxy (red de proxies interna) en AWS EC2 con Docker y Github Actions mediante SSH.
+          - Conecté Playwright con Selenium Grid para soportar tareas de scraping distribuidas y paralelizadas.
+          - Usé AWS Lambda para scrapers, CloudWatch para la observabilidad y S3 para el almacenamiento de CSV y JSON.
+          - Implementé de soluciones avanzadas de bypass para hCaptcha, reCAPTCHA y sistemas antibots.
+          - Extraje información del DOM, de APIs o PDFs.
+          - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions ·
+            Playwright, Pandas, Redis, Pytest"
+      - company: Tirant Lo Blanch
+        position: Ingeniero de Web Scraping
+        date:
+        start_date: 2023-02
+        end_date: 2024-11
+        location: Valencia, España (Remoto)
+        summary:
+        highlights:
+          - Integré y mantuve spiders para obtener datos legales de sitios web gubernamentales en España, Portugal y LATAM.
+          - Mantuve un proyecto legacy, escrito en el framework grails (groovy).
+          - Configuré Selenium-Grid para escalar navegadores y un Servicio de Tor (una red de proxies anonimizada) en AWS EC2.
+          - Diseñé sistemas para rotar proxies y headers y evitar baneos.
+          - Extraje informacion del DOM, APIs y diseñé un sistema de extracción para cualquier archivo de texto (PDF, DOC o DOCX).
+          - Usé AWS S3 para almacenamiento de los PDF.
+          - Implementé el CI/CD del proyecto de scraping con Gitlab CI via SSH.
+          - "Tecnologías: Scrapy, Selenium Grid, Grails, MongoDB, Git, Linux, Docker, Gitlab CI, Amazon Web Services (AWS)"
+      - company: TuCalendi
+        position: Desarrollador Back-end
+        date:
+        start_date: 2022-03
+        end_date: 2022-12
+        location: Tenerife, España (Remoto)
+        summary:
+        highlights:
+          - Migré y desplegué una API desde PHP (Codeigniter) a Python, utilizando el framework FastAPI.
+          - Diseñé y desarrollé aplicaciones de voz conversacionales para Amazon Alexa.
+          - "Tecnologías: FastAPI (Python framework), MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
+      - company: Ayuntamiento de Tías
+        position: Técnico Informático
+        date:
+        start_date: 2021-03
+        end_date: 2021-09
+        location: Lanzarote, España
+        summary:
+        highlights:
+          - Ofrecí soporte técnico a los empleados y ayuda en la automatización de descargas para el catastro.
+      - company: Universidad de Las Palmas de Gran Canaria
+        position: Proyecto de final de carrera
+        date:
+        start_date: 2018-02
+        end_date: 2019-07
+        location: Gran Canaria, España
+        summary:
+        highlights:
+          - Creé un sistema para clasificar eventos sonoros atmosféricos combinando técnicas de Machine Learning y Dirección de Procedencia, usando Matlab.
+    lenguajes:
+      - "Español: Nativo"
+      - "Inglés: Competencia profesional completa (C1)"
+design:
+  theme: engineeringresumes
+  templates:
+    education_entry:
+      main_column: |-
+        **INSTITUTION**, DEGREE AREA -- LOCATION
+  page:
+    size: a4
+    top_margin: 1cm # Bajamos de 1.2 a 1cm
+    bottom_margin: 1cm
+    left_margin: 1.25cm
+    right_margin: 1.25cm
+  header:
+    connections:
+      phone_number_format: international
+      show_icons: true
+    photo_width: 2.9cm # Foto ligeramente más pequeña
+    photo_position: left
+    space_below_name: 0.15cm
+    space_below_headline: 0.15cm
+    space_below_connections: 0.15cm
+  section_titles:
+    space_above: 0.35cm # Un pelín menos de aire entre secciones
+    space_below: 0.12cm
+  sections:
+    space_between_regular_entries: 0.5em # Espacio entre trabajos ajustado
+    space_between_text_based_entries: 0.25em
+  entries:
+    highlights:
+      space_above: 0.08cm
+      space_between_items: 0.06cm # Puntos de la lista un poco más compactos
+  typography:
+    line_spacing: 0.42em # Interlineado de precisión (antes 0.45)
+    font_size:
+      body: 10pt # El tamaño ideal para lectura
+      name: 23pt # Nombre equilibrado
+      headline: 10.2pt
+      connections: 9pt
+      section_titles: 11.5pt
+locale:
+  language: spanish
+  last_updated: Última actualización en
+  # month: month
+  # months: months
+  # year: year
+  # years: years
+  # present: present
+  # month_abbreviations:
+  #   - Jan
+  #   - Feb
+  #   - Mar
+  #   - Apr
+  #   - May
+  #   - June
+  #   - July
+  #   - Aug
+  #   - Sept
+  #   - Oct
+  #   - Nov
+  #   - Dec
+  # month_names:
+  #   - January
+  #   - February
+  #   - March
+  #   - April
+  #   - May
+  #   - June
+  #   - July
+  #   - August
+  #   - September
+  #   - October
+  #   - November
+  #   - December
+settings:
+  current_date: "2026-02-27"
+  render_command:
+    design:
+    locale:
+    typst_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.typ
+    pdf_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.pdf
+    markdown_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.md
+    html_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.html
+    png_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.png
+    dont_generate_markdown: false
+    dont_generate_html: false
+    dont_generate_typst: false
+    dont_generate_pdf: false
+    dont_generate_png: false
+  bold_keywords: []

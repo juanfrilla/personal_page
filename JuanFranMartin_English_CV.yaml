@@ -1,0 +1,188 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.6/schema.json
+cv:
+  name: Juan Francisco Martin
+  document_title: JF_Software_English # <--- Cambia esto
+  headline: Software Engineer
+  location: Teguise, Canary Islands, Spain
+  email: juanframaro@gmail.com
+  photo: ./pIMG_9795.jpg
+  phone: "+34 683593896"
+  website: https://juanfrilla.github.io/
+  social_networks:
+    - network: LinkedIn
+      username: jfmozaga
+    - network: GitHub
+      username: juanfrilla
+  custom_connections:
+  sections:
+    summary:
+      - Software Engineer specialized in web scraping and back-end development. Experienced in AWS deployments, CI/CD, and both SQL/NoSQL databases. Expert in developing advanced anti-bot bypasses. Currently expanding expertise in Reverse Engineering complex JavaScript to tackle highly obfuscated web environments.
+    education:
+      - institution: Industrial Organization School (EOI)
+        area: Full Stack Web Programming
+        degree: Bootcamp
+        start_date: 2021-09
+        end_date: 2021-12
+        location: Madrid, Spain (Remote)
+        highlights:
+          - "Technologies: HTML, CSS, JavaScript, Node, Go, MySQL, MongoDB, Docker, Linux, CI/CD, Git, DigitalOcean"
+      - institution: University of Las Palmas de Gran Canaria (ULPGC)
+        area: Telecommunications Engineering
+        degree: BS
+        start_date: 2012-09
+        end_date: 2019-07
+        location: Tafira, Spain
+        highlights:
+          - "GPA: 7/10"
+          - "Technologies: Java, Matlab, C, Assembly, MySQL"
+    experience:
+      - company: Vumi.io
+        position: Web Scraping Engineer
+        date:
+        start_date: 2024-11
+        end_date: 2025-11
+        location: Asturias, Spain (Remote)
+        summary:
+        highlights:
+          - Integrated and maintained scrapers to obtain financial data from banks or brokers.
+          - Reverse engineered complex javascript using DevTools to automate MFA/2FA/JWT/OAUTH2 authentication flows.
+          - Configured Selenium Grid and Scrapoxy (proxy network), on AWS EC2 with Docker, and Github Actions via SSH.
+          - Conected Playwright with Selenium Grid to support browser-based distributed and parallelized scraping tasks.
+          - Used AWS Lambda for scrapers, CloudWatch for observability, and S3 for CSV and JSON storage.
+          - Implemented advanced bypass solutions for hCaptcha, reCAPTCHA, and anti-bot systems.
+          - Extracted information from the DOM, APIs, or PDFs.
+          - "Technologies: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions ·
+            Playwright, Pandas, Redis, Pytest"
+      - company: Tirant Lo Blanch
+        position: Web Scraping Engineer
+        date:
+        start_date: 2023-02
+        end_date: 2024-11
+        location: Valencia, Spain (Remote)
+        summary:
+        highlights:
+          - Integrated and maintained spiders to obtain legal data from government websites in Spain, Portugal and LATAM.
+          - Maintained a legacy project, written in the grails framework (groovy).
+          - Configured Selenium Grid on AWS EC2 to scale the browser infrastructure, integrating a Tor Service proxy network for anonymized web scraping.
+          - Engineered a rotating proxies/headers system to avoid bans.
+          - Extracted data from the DOM, APIs, and blueprinted a dedicated system for parsing information from PDF, DOC, and DOCX files.
+          - Used AWS S3 for PDF storage.
+          - Implemented the scraping project's CI/CD with Gitlab CI via SSH.
+          - "Technologies: Scrapy, Selenium Grid, Grails, MongoDB, Git, Linux, Docker, Gitlab CI, Amazon Web Services (AWS)"
+      - company: TuCalendi
+        position: Back-end Developer
+        date:
+        start_date: 2022-03
+        end_date: 2022-12
+        location: Tenerife, Spain (Remote)
+        summary:
+        highlights:
+          - Migrated and deployed an API from PHP (Codeigniter) to Python, using the FastAPI framework.
+          - Designed and developed conversational voice applications for Amazon Alexa.
+          - "Technologies: FastAPI (Python framework), MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
+      - company: Tías Town Hall
+        position: Computer Technisian
+        date:
+        start_date: 2021-03
+        end_date: 2021-09
+        location: Lanzarote, Spain
+        summary:
+        highlights:
+          - Technical support to employees and automation of cadastral downloads.
+      - company: University of Las Palmas de Gran Canaria
+        position: Final Degree Project
+        date:
+        start_date: 2018-02
+        end_date: 2019-07
+        location: Gran Canaria, Spain
+        summary:
+        highlights:
+          - Engineered a system to classify atmospheric sound events combining Machine Learning and Direction of Arrival techniques, using Matlab.
+    languages:
+      - "Spanish: Native"
+      - "English: Professional Working Proficiency (C1)"
+design:
+  theme: engineeringresumes
+  page:
+    size: a4
+    top_margin: 1cm # Bajamos de 1.2 a 1cm
+    bottom_margin: 1cm
+    left_margin: 1.25cm
+    right_margin: 1.25cm
+  header:
+    connections:
+      phone_number_format: international
+      show_icons: true
+    photo_width: 2.9cm # Foto ligeramente más pequeña
+    photo_position: left
+    space_below_name: 0.15cm
+    space_below_headline: 0.15cm
+    space_below_connections: 0.15cm
+  section_titles:
+    space_above: 0.35cm # Un pelín menos de aire entre secciones
+    space_below: 0.12cm
+  sections:
+    space_between_regular_entries: 0.5em # Espacio entre trabajos ajustado
+    space_between_text_based_entries: 0.25em
+  entries:
+    highlights:
+      space_above: 0.08cm
+      space_between_items: 0.06cm # Puntos de la lista un poco más compactos
+  typography:
+    line_spacing: 0.42em # Interlineado de precisión (antes 0.45)
+    font_size:
+      body: 10pt # El tamaño ideal para lectura
+      name: 23pt # Nombre equilibrado
+      headline: 10.2pt
+      connections: 9pt
+      section_titles: 11.5pt
+locale:
+  language: english
+  # last_updated: Last updated in
+  # month: month
+  # months: months
+  # year: year
+  # years: years
+  # present: present
+  # month_abbreviations:
+  #   - Jan
+  #   - Feb
+  #   - Mar
+  #   - Apr
+  #   - May
+  #   - June
+  #   - July
+  #   - Aug
+  #   - Sept
+  #   - Oct
+  #   - Nov
+  #   - Dec
+  # month_names:
+  #   - January
+  #   - February
+  #   - March
+  #   - April
+  #   - May
+  #   - June
+  #   - July
+  #   - August
+  #   - September
+  #   - October
+  #   - November
+  #   - December
+settings:
+  current_date: "2026-02-27"
+  render_command:
+    design:
+    locale:
+    typst_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.typ
+    pdf_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.pdf
+    markdown_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.md
+    html_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.html
+    png_path: rendercv_output/NAME_IN_SNAKE_CASE_CV.png
+    dont_generate_markdown: false
+    dont_generate_html: false
+    dont_generate_typst: false
+    dont_generate_pdf: false
+    dont_generate_png: false
+  bold_keywords: []
