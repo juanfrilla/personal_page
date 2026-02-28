@@ -16,7 +16,7 @@ cv:
   custom_connections:
   sections:
     sumario:
-      - Ingeniero de software especializado en web scraping y desarrollo back-end. Experiencia en AWS, CI/CD y bases de datos SQL/NoSQL, además de evasiones anti-bot avanzadas. Actualmente, estoy ampliando mi experiencia en ingeniería inversa de JavaScript complejo para abordar entornos web altamente ofuscados.
+      - Ingeniero de software especializado en web scraping y desarrollo back-end. Experiencia en AWS, CI/CD y bases de datos SQL/NoSQL, además de evasiones anti-bot avanzadas. Actualmente, estoy ampliando mi experiencia en ingeniería inversa de JavaScript complejo para abordar código de sitios web altamente ofuscados.
     educación:
       - institution: Escuela de Organización Industrial (EOI)
         area: en Programación Web Full-Stack
