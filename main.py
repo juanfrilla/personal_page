@@ -258,40 +258,53 @@ with header_container:
             st.session_state.lang = selected_lang
             st.rerun()
 
+
+@st.cache_data(show_spinner="Generating PDF...", ttl=60)
+def get_cached_pdf(yaml_file, output_pdf):
+    # Esta función solo se ejecutará UNA vez por idioma cada 60 segundos
+    # Evitando que el clic de descarga reinicie el proceso de renderizado
+    try:
+        os.makedirs(os.path.dirname(output_pdf), exist_ok=True)
+        subprocess.run(
+            ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
+            check=True,
+            capture_output=True,
+        )
+        if os.path.exists(output_pdf):
+            with open(output_pdf, "rb") as f:
+                return f.read()
+    except Exception as e:
+        st.error(f"Error: {e}")
+    return None
+
+
+pdf_bits = get_cached_pdf(yaml_file, output_pdf)
 col_text, col_photo = st.columns([4, 1])
 
 with col_text:
-    # Título y Headline pegados
     st.title(cv["name"])
     st.subheader(cv.get("headline", ""))
-
-    # Info de contacto y Links en la misma línea para ahorrar espacio
-    links = [f"📍 {cv.get('location', '')}", f"✉️ {cv.get('email', '')}"]
+    contact_html = (
+        f"📍 {cv.get('location', '')} &nbsp; | &nbsp; ✉️ {cv.get('email', '')}"
+    )
     for sn in cv.get("social_networks", []):
-        links.append(
-            f"[{sn['network']}](https://{sn['network'].lower()}.com/{sn['username']})"
-        )
+        contact_html += f" &nbsp; | &nbsp; [{sn['network']}](https://{sn['network'].lower()}.com/{sn['username']})"
+    st.markdown(contact_html)
 
-    st.markdown("  |  ".join(links))
-
-    # El botón de descarga justo debajo de los links, sin espacios extra
-    pdf_data = generate_and_get_pdf()
-    if pdf_data:
-        # No usamos use_container_width aquí para que no ocupe todo el ancho
-        # y se vea más minimalista, solo el tamaño del texto.
+    # Botón de descarga: Ahora solo descarga, no re-genera
+    if pdf_bits:
         st.download_button(
             label=L["download"],
-            data=pdf_data,
+            data=pdf_bits,
             file_name=os.path.basename(output_pdf),
             mime="application/pdf",
             type="primary",
-            key=f"dl_header_{st.session_state.lang}",
+            key=f"dl_btn_{st.session_state.lang}",  # Clave única por idioma
         )
 
 with col_photo:
     photo_path = cv.get("photo", "").lstrip("./")
     if photo_path and Path(photo_path).exists():
-        # "use_container_width" asegura que se ajuste al 1 de la columna
         st.image(photo_path, width="content")
 
 st.markdown("---")
