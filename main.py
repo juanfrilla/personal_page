@@ -59,7 +59,6 @@ output_pdf = (
 
 
 def generate_and_get_pdf():
-    """Genera el PDF con rendercv y devuelve los bytes para descarga directa."""
     result = subprocess.run(
         ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
         capture_output=True,
@@ -203,7 +202,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- HEADER ---
+
 col_head, col_sw = st.columns([4, 1])
 with col_sw:
     if st.button(L["switch"]):
@@ -236,7 +235,6 @@ with col_photo:
     if photo_path and Path(photo_path).exists():
         st.image(photo_path, width=180)
 
-# --- PDF GENERATION ---
 st.markdown("---")
 
 st.download_button(
@@ -249,7 +247,6 @@ st.download_button(
 
 st.markdown("---")
 
-# --- SUMMARY ---
 if sum_key and sum_key in sections:
     st.markdown(
         f'<div class="section-title">{L["about"]}</div>', unsafe_allow_html=True
@@ -286,7 +283,7 @@ def render_timeline_section(section_key, title):
 render_timeline_section(exp_key, L["experience"])
 render_timeline_section(edu_key, L["education"])
 
-# --- LANGUAGES ---
+
 if lang_key and lang_key in sections:
     st.markdown(
         f'<div class="section-title">{L["languages"]}</div>', unsafe_allow_html=True
