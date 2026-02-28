@@ -1,10 +1,11 @@
+import os
+import subprocess
 from pathlib import Path
 
 import streamlit as st
 import yaml
 from language_detection import detect_browser_language
 
-# --- CONFIGURACIÓN Y ESTADO ---
 st.set_page_config(page_title="Juan Francisco Martin", page_icon="💻", layout="wide")
 
 if "lang" not in st.session_state:
@@ -12,15 +13,11 @@ if "lang" not in st.session_state:
     st.session_state.lang = (
         "es" if (browser_lang or "en").lower().startswith("es") else "en"
     )
+lang = st.session_state.lang
 
-# --- CONSTANTES ---
 YAML_FILES = {
     "en": "JuanFranMartin_English_CV.yaml",
     "es": "JuanFranMartin_Spanish_CV.yaml",
-}
-PDF_FILES = {
-    "en": "JuanFranMartin_English_CV.pdf",
-    "es": "JuanFranMartin_Spanish_CV.pdf",
 }
 
 LABELS = {
@@ -30,6 +27,8 @@ LABELS = {
         "education": "Education",
         "languages": "Languages",
         "download": "⬇️ Download CV (PDF)",
+        "generating": "Generating PDF...",
+        "download_ready": "⬇️ Save PDF",
         "no_pdf": "PDF not found.",
         "switch": "🇪🇸 Español",
         "new_lang": "es",
@@ -38,10 +37,12 @@ LABELS = {
     },
     "es": {
         "about": "Sobre mí",
-        "experiencia": "Experiencia",
-        "educación": "Educación",
-        "lenguajes": "Idiomas",
+        "experience": "Experiencia",
+        "education": "Educación",
+        "languages": "Idiomas",
         "download": "⬇️ Descargar CV (PDF)",
+        "generating": "Generando PDF...",
+        "download_ready": "⬇️ Guardar PDF",
         "no_pdf": "PDF no encontrado.",
         "switch": "🇬🇧 English",
         "new_lang": "en",
@@ -50,8 +51,28 @@ LABELS = {
     },
 }
 
+os.makedirs("rendercv_output", exist_ok=True)
+yaml_file = YAML_FILES[lang]
+output_pdf = (
+    f"rendercv_output/JuanFranMartin_{'English' if lang == 'en' else 'Spanish'}_CV.pdf"
+)
 
-# --- FUNCIONES ---
+
+def generate_and_get_pdf():
+    """Genera el PDF con rendercv y devuelve los bytes para descarga directa."""
+    try:
+        subprocess.run(
+            ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        return Path(output_pdf).read_bytes()
+    except subprocess.CalledProcessError as e:
+        st.error(f"Error generating PDF: {e.stderr}")
+        return None
+
+
 @st.cache_data
 def load_cv_data(lang):
     file_path = YAML_FILES[lang]
@@ -62,19 +83,19 @@ def load_cv_data(lang):
 
 
 def render_tags(techs_string):
-    """Convierte string de tecnologías en tags HTML"""
     tags = techs_string.replace("·", ",").split(",")
     return "".join(f'<span class="tag">{t.strip()}</span>' for t in tags if t.strip())
 
 
-# --- CARGA DE DATOS ---
-cv = load_cv_data(st.session_state.lang)
-L = LABELS[st.session_state.lang]
+cv = load_cv_data(lang)
+L = LABELS[lang]
+
+if not cv:
+    st.error("CV data not found.")
+    st.stop()
 
 sections = cv.get("sections", {})
-
 edu_key = next((k for k in sections if k.lower().startswith("educ")), None)
-
 lang_key = next(
     (
         k
@@ -83,39 +104,25 @@ lang_key = next(
     ),
     None,
 )
-
 exp_key = next((k for k in sections if k.lower().startswith("exp")), None)
-
 sum_key = next(
     (k for k in sections if k.lower().startswith("sum") or k.lower().startswith("res")),
     None,
 )
 
-if not cv:
-    st.error("CV data not found.")
-    st.stop()
-
 st.markdown(
     """
 <style>
-    /* Importamos fuentes: Inter para lectura y JetBrains Mono para ese toque de "código" */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-    /* Fondo claro y limpio estilo GitHub Light */
-    .stApp {
-        background-color: #ffffff;
-        color: #1f2328;
-    }
+    .stApp { background-color: #ffffff; color: #1f2328; }
 
-    /* Tipografía general */
     html, body, [class*="css"], .stMarkdown, p, li, label {
         font-family: 'Inter', sans-serif !important;
-        color: #444d56 !important; /* Gris oscuro profesional */
+        color: #444d56 !important;
         font-size: 0.95rem !important;
         line-height: 1.6 !important;
     }
-
-    /* Títulos principales: Limpios y negros */
     h1 {
         font-family: 'Inter', sans-serif !important;
         font-weight: 700 !important;
@@ -123,28 +130,23 @@ st.markdown(
         letter-spacing: -0.02em !important;
         margin-bottom: 0px !important;
     }
-
     h2, h3 {
         font-family: 'Inter', sans-serif !important;
         font-weight: 600 !important;
         color: #1f2328 !important;
     }
-
-    /* Títulos de sección estilo "Editor de Código" en modo claro */
     .section-title {
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.8rem !important;
         font-weight: 600 !important;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        color: #0969da !important; /* Azul software GitHub */
+        color: #0969da !important;
         border-bottom: 1px solid #d0d7de;
         padding-bottom: 8px !important;
         margin-top: 2.5rem !important;
         margin-bottom: 1.5rem !important;
     }
-
-    /* Expanders estilo Cards nítidas */
     .streamlit-expanderHeader {
         font-family: 'Inter', sans-serif !important;
         background-color: #f6f8fa !important;
@@ -152,15 +154,12 @@ st.markdown(
         border-radius: 6px !important;
         color: #1f2328 !important;
     }
-
     .streamlit-expanderContent {
         background-color: #ffffff !important;
         border: 1px solid #d0d7de !important;
         border-top: none !important;
         border-radius: 0 0 6px 6px !important;
     }
-
-    /* Tags minimalistas claros */
     .tag {
         display: inline-block;
         background: #ddf4ff;
@@ -172,15 +171,11 @@ st.markdown(
         font-size: 0.75rem;
         font-family: 'JetBrains Mono', monospace !important;
     }
-
-    /* Metadatos (fechas, lugares) */
     .entry-meta {
         color: #636c76 !important;
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.8rem !important;
     }
-
-    /* Botones de acción minimalistas */
     .stDownloadButton > button, .stButton > button {
         background-color: #f6f8fa !important;
         color: #24292f !important;
@@ -190,65 +185,46 @@ st.markdown(
         font-size: 0.8rem !important;
         transition: 0.2s;
     }
-
     .stDownloadButton > button:hover, .stButton > button:hover {
         background-color: #ebf0f4 !important;
         border-color: #afb8c1 !important;
     }
-
-    /* Info de contacto */
     .contact-info {
         font-family: 'JetBrains Mono', monospace !important;
         font-size: 0.85rem !important;
         color: #0969da !important;
         margin: 10px 0px;
     }
-
-    /* Imagen de perfil */
-    img {
-        border-radius: 50%;
-        border: 2px solid #d0d7de !important;
-    }
-
-    /* Scrollbar minimalista claro */
+    img { border-radius: 50%; border: 2px solid #d0d7de !important; }
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #ffffff; }
     ::-webkit-scrollbar-thumb { background: #d0d7de; border-radius: 10px; }
-
     hr { border-color: #d0d7de !important; }
-    
     #MainMenu, footer { visibility: hidden; }
 </style>
 """,
     unsafe_allow_html=True,
 )
 
-# --- HEADER & NAVIGATION ---
+# --- HEADER ---
 col_head, col_sw = st.columns([4, 1])
-
 with col_sw:
     if st.button(L["switch"]):
         st.session_state.lang = L["new_lang"]
         st.rerun()
-
 with col_head:
     st.title(cv["name"])
     st.subheader(cv.get("headline", ""))
 
-# --- COLUMNAS PRINCIPALES ---
-col1, col2 = st.columns([3, 1])
-
-# --- INFORMACIÓN DE CONTACTO (Debajo del Título/Subheader) ---
 st.markdown(
     f"""
     <div class="contact-info">
         📍 {cv.get("location", "")} &nbsp; | &nbsp; ✉️ {cv.get("email", "")}
     </div>
-    """,
+""",
     unsafe_allow_html=True,
 )
 
-# --- LINKS Y FOTO ---
 col_links, col_photo = st.columns([3, 1])
 with col_links:
     links = []
@@ -259,69 +235,64 @@ with col_links:
     st.markdown("  |  ".join(links))
 
 with col_photo:
-    if cv.get("photo") and Path(cv["photo"].lstrip("./")).exists():
-        st.image(cv["photo"].lstrip("./"), width=180)
+    photo_path = cv.get("photo", "").lstrip("./")
+    if photo_path and Path(photo_path).exists():
+        st.image(photo_path, width=180)
 
-# --- BOTÓN DE DESCARGA ---
-pdf_path = Path(PDF_FILES[st.session_state.lang])
-if pdf_path.exists():
-    with open(pdf_path, "rb") as f:
-        st.download_button(
-            L["download"], f, file_name=pdf_path.name, mime="application/pdf"
-        )
+# --- PDF GENERATION ---
+st.markdown("---")
+
+st.download_button(
+    label=L["download"],
+    data=generate_and_get_pdf,
+    file_name=os.path.basename(output_pdf),
+    mime="application/pdf",
+    type="primary",
+)
 
 st.markdown("---")
 
-# --- SECCIONES DINÁMICAS ---
-sections = cv.get("sections", {})
-
-# Sobre mí
-if sum_key in sections:
+# --- SUMMARY ---
+if sum_key and sum_key in sections:
     st.markdown(
         f'<div class="section-title">{L["about"]}</div>', unsafe_allow_html=True
     )
     st.write(" ".join(sections[sum_key]))
 
 
-# Experiencia y Educación (Lógica unificada)
 def render_timeline_section(section_key, title):
-    if section_key in sections:
-        st.markdown(f'<div class="section-title">{title}</div>', unsafe_allow_html=True)
-        for item in sections[section_key]:
-            start = item.get("start_date", "")
-            end = item.get("end_date", L["present"])
-            name = item.get("company") or item.get("institution")
-            role = item.get("position") or item.get("degree", "")
+    if not section_key or section_key not in sections:
+        return
+    st.markdown(f'<div class="section-title">{title}</div>', unsafe_allow_html=True)
+    for item in sections[section_key]:
+        start = str(item.get("start_date", ""))
+        end = str(item.get("end_date", L["present"]))
+        name = item.get("company") or item.get("institution", "")
+        role = item.get("position") or item.get("degree", "")
 
-            with st.expander(f"**{role}** @ {name}  ({start} — {end})"):
-                if item.get("location"):
+        with st.expander(f"**{role}** @ {name}  ({start} — {end})"):
+            if item.get("location"):
+                st.markdown(
+                    f'<div class="entry-meta">📍 {item["location"]}</div>',
+                    unsafe_allow_html=True,
+                )
+            for h in item.get("highlights", []):
+                if any(h.startswith(p) for p in ["Technologies", "Tecnologías"]):
+                    techs = h.split(":", 1)[-1]
                     st.markdown(
-                        f'<div class="entry-meta">📍 {item["location"]}</div>',
-                        unsafe_allow_html=True,
+                        f"**{L['tech']}:** {render_tags(techs)}", unsafe_allow_html=True
                     )
-
-                for h in item.get("highlights", []):
-                    # Detectar si es línea de tecnologías
-                    if any(
-                        h.startswith(prefix)
-                        for prefix in ["Technologies", "Tecnologías"]
-                    ):
-                        techs = h.split(":", 1)[-1]
-                        st.markdown(
-                            f"**{L['tech']}:** {render_tags(techs)}",
-                            unsafe_allow_html=True,
-                        )
-                    else:
-                        st.markdown(f"- {h}")
+                else:
+                    st.markdown(f"- {h}")
 
 
-render_timeline_section(exp_key, L[exp_key])
-render_timeline_section(edu_key, L[edu_key])
+render_timeline_section(exp_key, L["experience"])
+render_timeline_section(edu_key, L["education"])
 
-# Idiomas
-if lang_key in sections:
+# --- LANGUAGES ---
+if lang_key and lang_key in sections:
     st.markdown(
-        f'<div class="section-title">{L[lang_key]}</div>', unsafe_allow_html=True
+        f'<div class="section-title">{L["languages"]}</div>', unsafe_allow_html=True
     )
     cols = st.columns(len(sections[lang_key]))
     for idx, lang_item in enumerate(sections[lang_key]):

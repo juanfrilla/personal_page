@@ -8,6 +8,16 @@ A clean, data-driven personal portfolio built with **Streamlit** and powered by 
 
 ---
 
+## 💡 Why This Project?
+
+Keeping a CV and a personal website in sync is tedious — you end up updating the same information in two different places, and they inevitably drift apart.
+
+This project solves that by using a **single YAML file as the source of truth**. Edit it once, and both your PDF CV and your web portfolio update automatically. No duplication, no inconsistencies, no wasted time.
+
+> Update your YAML → run one command → your PDF and website are both up to date.
+
+---
+
 ## ✨ Key Features
 
 - **RenderCV Integration:** Uses the standardized [RenderCV](https://github.com/sinaatalay/rendercv) YAML schema. One file updates both your LaTeX PDF and this web portfolio.
