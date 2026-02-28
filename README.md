@@ -35,6 +35,9 @@ A clean, data-driven personal portfolio built with **Streamlit** and powered by 
 ├── requirements.txt                 # Dependencies
 ├── JuanFranMartin_English_CV.yaml   # RenderCV Source (EN)
 ├── JuanFranMartin_Spanish_CV.yaml   # RenderCV Source (ES)
-├── JuanFranMartin_English_CV.pdf    # Generated PDF (EN)
-└── JuanFranMartin_Spanish_CV.pdf    # Generated PDF (ES)
 ```
+
+## 🚀 Commands
+
+- **Generate CVs:** `python render_cvs.py`
+- **Run streamlit:** `streamlit run main.py`

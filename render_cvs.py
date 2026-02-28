@@ -6,14 +6,14 @@ commands = [
         "render",
         "JuanFranMartin_English_CV.yaml",
         "--pdf-path",
-        "JuanFranMartin_English_CV.pdf",
+        "./rendercv_output/JuanFranMartin_English_CV.pdf",
     ],
     [
         "rendercv",
         "render",
         "JuanFranMartin_Spanish_CV.yaml",
         "--pdf-path",
-        "JuanFranMartin_Spanish_CV.pdf",
+        "./rendercv_output/JuanFranMartin_Spanish_CV.pdf",
     ],
 ]
 
