@@ -264,7 +264,8 @@ with col_links:
 with col_photo:
     photo_path = cv.get("photo", "").lstrip("./")
     if photo_path and Path(photo_path).exists():
-        st.image(photo_path, width=180)
+        st.image(photo_path, width="content")
+
 
 st.markdown("---")
 
