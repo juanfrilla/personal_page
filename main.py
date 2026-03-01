@@ -55,7 +55,6 @@ output_pdf = f"rendercv_output/JuanFranMartin_{'English' if st.session_state.lan
 
 
 def get_pdf_bytes(file_path):
-    """Lee el PDF generado previamente por GitHub Actions."""
     path = Path(file_path)
     if path.exists():
         return path.read_bytes()
@@ -99,142 +98,13 @@ sum_key = next(
     None,
 )
 
-st.markdown(
-    """
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-    .stApp { background-color: #ffffff; color: #1f2328; }
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-    /* --- CENTRADO Y LIMITACIÓN DE ANCHO --- */
-    .block-container {
-        max-width: 1300px !important;
-        padding-top: 2rem !important;
-        padding-bottom: 5rem !important;
-        margin: auto;
-    }
 
-    /* Aumentado de 0.95rem a 1.05rem para mejor legibilidad */
-    html, body, [class*="css"], .stMarkdown, p, li, label {
-        font-family: 'Inter', sans-serif !important;
-        color: #444d56 !important;
-        font-size: 1.05rem !important;
-        line-height: 1.6 !important;
-    }
-    
-    h1 {
-        font-family: 'Inter', sans-serif !important;
-        font-weight: 700 !important;
-        color: #1f2328 !important;
-        font-size: 2.5rem !important; /* Ajuste para el H1 */
-        letter-spacing: -0.02em !important;
-        margin-bottom: 0px !important;
-    }
-    
-    h2, h3 {
-        font-family: 'Inter', sans-serif !important;
-        font-weight: 600 !important;
-        color: #1f2328 !important;
-    }
-    
-    /* Aumentado de 0.8rem a 0.9rem */
-    .section-title {
-        font-family: 'JetBrains Mono', monospace !important;
-        font-size: 0.9rem !important;
-        font-weight: 600 !important;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: #0969da !important;
-        border-bottom: 1px solid #d0d7de;
-        padding-bottom: 8px !important;
-        margin-top: 2.5rem !important;
-        margin-bottom: 1.5rem !important;
-    }
-    
-    .streamlit-expanderHeader {
-        font-family: 'Inter', sans-serif !important;
-        background-color: #f6f8fa !important;
-        border: 1px solid #d0d7de !important;
-        border-radius: 6px !important;
-        color: #1f2328 !important;
-        font-size: 1rem !important;
-    }
-    
-    .streamlit-expanderContent {
-        background-color: #ffffff !important;
-        border: 1px solid #d0d7de !important;
-        border-top: none !important;
-        border-radius: 0 0 6px 6px !important;
-    }
-    
-    /* Aumentado de 0.75rem a 0.85rem */
-    .tag {
-        display: inline-block;
-        background: #ddf4ff;
-        color: #0969da !important;
-        border: 1px solid #54aeff66;
-        border-radius: 12px;
-        padding: 2px 12px;
-        margin: 2px;
-        font-size: 0.85rem;
-        font-family: 'JetBrains Mono', monospace !important;
-    }
-    
-    .entry-meta {
-        color: #636c76 !important;
-        font-family: 'JetBrains Mono', monospace !important;
-        font-size: 0.85rem !important;
-    }
-    
-    /* Botones ligeramente más grandes */
-    .stDownloadButton > button, .stButton > button {
-        background-color: #f6f8fa !important;
-        color: #24292f !important;
-        border: 1px solid #d0d7de !important;
-        border-radius: 6px !important;
-        font-family: 'Inter', sans-serif !important;
-        font-size: 0.9rem !important;
-        padding: 0.5rem 1rem !important;
-        transition: 0.2s;
-        width: auto;
-    }
-    
-    .stDownloadButton > button:hover, .stButton > button:hover {
-        background-color: #ebf0f4 !important;
-        border-color: #afb8c1 !important;
-    }
-    
-    .contact-info {
-        font-family: 'JetBrains Mono', monospace !important;
-        font-size: 0.95rem !important;
-        color: #0969da !important;
-        margin: 10px 0px;
-    }
-    
-    img { border-radius: 50%; border: 2px solid #d0d7de !important; }
-    
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #ffffff; }
-    ::-webkit-scrollbar-thumb { background: #d0d7de; border-radius: 10px; }
-    
-    hr { border-color: #d0d7de !important; }
-    
-    #MainMenu, footer { visibility: hidden; }
-
-    /* Ajuste para móviles */
-    @media (max-width: 800px) {
-        .block-container {
-            max-width: 95% !important;
-            padding: 1rem !important;
-        }
-        html, body, [class*="css"], .stMarkdown, p, li, label {
-            font-size: 1rem !important;
-        }
-    }
-</style>
-""",
-    unsafe_allow_html=True,
-)
+local_css("style.css")
 
 header_container = st.container()
 with header_container:
@@ -319,18 +189,15 @@ if lang_key and lang_key in sections:
         cols[idx].markdown(f"**{lang_item}**")
 st.markdown("---")
 
-# 1. Obtenemos los bytes primero
 pdf_bits = get_pdf_bytes(output_pdf)
 
-# 2. Creamos las columnas para el centrado
 _, col_btn, _ = st.columns([1, 2, 1])
 
 with col_btn:
-    # 3. Solo mostramos el botón si pdf_bits NO es None
     if pdf_bits is not None:
         st.download_button(
             label=L["download"],
-            data=pdf_bits,  # Ahora estamos seguros de que no es None
+            data=pdf_bits,
             file_name=os.path.basename(output_pdf),
             mime="application/pdf",
             type="primary",
@@ -338,8 +205,8 @@ with col_btn:
             use_container_width=True,
         )
     else:
-        # Mensaje amigable si el archivo no se encuentra
         st.warning(L.get("no_pdf", "PDF no disponible"))
+
 # TODO quitar color negro en hover en el movil
 # TODO revisar cambiar de idioma en el movil
 # TODO poco mas
