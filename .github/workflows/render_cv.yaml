@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "*.yaml"
+      - "render_cvs.py"
 
 jobs:
   render:
@@ -36,7 +39,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
           # El flag -f es la clave: fuerza a Git a añadir los archivos aunque estén en el .gitignore
           git add -f rendercv_output/*.pdf
 
