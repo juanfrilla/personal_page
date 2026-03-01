@@ -49,7 +49,7 @@ cv:
           - Configuré Selenium Grid y Scrapoxy (red de proxies interna) en AWS EC2 con Docker y Github Actions mediante SSH.
           - Conecté Playwright con Selenium Grid para soportar tareas de scraping distribuidas y paralelizadas.
           - Usé AWS, esto es Lambda con arquitectura Serverless para scraping escalable, CloudWatch para la observabilidad y S3 para el almacenamiento de CSV y JSON.
-          - Implementé de soluciones avanzadas de bypass para hCaptcha, reCAPTCHA y sistemas antibots.
+          - Implementé soluciones avanzadas de bypass para hCaptcha, reCAPTCHA y sistemas antibots.
           - Extraje información del DOM, de APIs o PDFs.
           - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
             Playwright, Pandas, Redis, Pytest"
@@ -89,6 +89,7 @@ cv:
         summary:
         highlights:
           - Ofrecí soporte técnico a los empleados y ayuda en la automatización de descargas para el catastro.
+          - Actualicé ordenadores a Windows 10 e instalé Microsoft 365 para la totalidad de la plantilla del Ayuntamiento
       - company: Universidad de Las Palmas de Gran Canaria
         position: Proyecto de final de carrera
         date:

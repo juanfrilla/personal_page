@@ -1,5 +1,4 @@
 import os
-import subprocess
 from pathlib import Path
 
 import streamlit as st
@@ -11,7 +10,6 @@ if "lang" not in st.session_state:
     st.session_state.lang = (
         "es" if (browser_lang or "en").lower().startswith("es") else "en"
     )
-lang = st.session_state.lang
 
 YAML_FILES = {
     "en": "JuanFranMartin_English_CV.yaml",
@@ -32,6 +30,7 @@ LABELS = {
         "new_lang": "es",
         "present": "present",
         "tech": "Tech Stack",
+        "pdf_path": "./rendercv_output/JuanFranMartin_English_CV.pdf",
     },
     "es": {
         "about": "Sobre mí",
@@ -46,25 +45,21 @@ LABELS = {
         "new_lang": "en",
         "present": "presente",
         "tech": "Tecnologías",
+        "pdf_path": "./rendercv_output/JuanFranMartin_Spanish_CV.pdf",
     },
 }
 
 os.makedirs("rendercv_output", exist_ok=True)
-yaml_file = YAML_FILES[lang]
-output_pdf = (
-    f"rendercv_output/JuanFranMartin_{'English' if lang == 'en' else 'Spanish'}_CV.pdf"
-)
+yaml_file = YAML_FILES[st.session_state.lang]
+output_pdf = f"rendercv_output/JuanFranMartin_{'English' if st.session_state.lang == 'en' else 'Spanish'}_CV.pdf"
 
 
-def generate_and_get_pdf():
-    result = subprocess.run(
-        ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"rendercv failed:\n{result.stderr}")
-    return Path(output_pdf).read_bytes()
+def get_pdf_bytes(file_path):
+    """Lee el PDF generado previamente por GitHub Actions."""
+    path = Path(file_path)
+    if path.exists():
+        return path.read_bytes()
+    return None
 
 
 @st.cache_data
@@ -81,8 +76,8 @@ def render_tags(techs_string):
     return "".join(f'<span class="tag">{t.strip()}</span>' for t in tags if t.strip())
 
 
-cv = load_cv_data(lang)
-L = LABELS[lang]
+cv = load_cv_data(st.session_state.lang)
+L = LABELS[st.session_state.lang]
 
 if not cv:
     st.error("CV data not found.")
@@ -259,26 +254,6 @@ with header_container:
             st.rerun()
 
 
-@st.cache_data(show_spinner="Generating PDF...", ttl=60)
-def get_cached_pdf(yaml_file, output_pdf):
-    # Esta función solo se ejecutará UNA vez por idioma cada 60 segundos
-    # Evitando que el clic de descarga reinicie el proceso de renderizado
-    try:
-        os.makedirs(os.path.dirname(output_pdf), exist_ok=True)
-        subprocess.run(
-            ["rendercv", "render", yaml_file, "--pdf-path", output_pdf],
-            check=True,
-            capture_output=True,
-        )
-        if os.path.exists(output_pdf):
-            with open(output_pdf, "rb") as f:
-                return f.read()
-    except Exception as e:
-        st.error(f"Error: {e}")
-    return None
-
-
-pdf_bits = get_cached_pdf(yaml_file, output_pdf)
 col_text, col_photo = st.columns([4, 1])
 
 with col_text:
@@ -290,17 +265,6 @@ with col_text:
     for sn in cv.get("social_networks", []):
         contact_html += f" &nbsp; | &nbsp; [{sn['network']}](https://{sn['network'].lower()}.com/{sn['username']})"
     st.markdown(contact_html)
-
-    # Botón de descarga: Ahora solo descarga, no re-genera
-    if pdf_bits:
-        st.download_button(
-            label=L["download"],
-            data=pdf_bits,
-            file_name=os.path.basename(output_pdf),
-            mime="application/pdf",
-            type="primary",
-            key=f"dl_btn_{st.session_state.lang}",  # Clave única por idioma
-        )
 
 with col_photo:
     photo_path = cv.get("photo", "").lstrip("./")
@@ -353,3 +317,17 @@ if lang_key and lang_key in sections:
     cols = st.columns(len(sections[lang_key]))
     for idx, lang_item in enumerate(sections[lang_key]):
         cols[idx].markdown(f"**{lang_item}**")
+st.markdown("---")
+
+_, col_btn, _ = st.columns([1, 2, 1])
+
+with col_btn:
+    st.download_button(
+        label=L["download"],
+        data=get_pdf_bytes(output_pdf),
+        file_name=os.path.basename(output_pdf),
+        mime="application/pdf",
+        type="primary",
+        key=f"dl_btn_{st.session_state.lang}",
+        width="content",
+    )

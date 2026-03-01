@@ -1,0 +1,49 @@
+name: Render CV
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "*.yaml"
+      - "render_cvs.py"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install rendercv
+          # Si tu script render_cvs.py usa otras librerías, instálalas aquí
+
+      - name: Run render script
+        run: python render_cvs.py
+
+      - name: Commit and Push PDFs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          # Forzamos el guardado de la carpeta de salida
+          git add rendercv_output/*.pdf
+
+          # Solo hacemos commit si realmente hubo cambios en los PDFs
+          if git diff --staged --quiet; then
+            echo "Sin cambios detectados en los PDFs."
+          else
+            git commit -m "chore: auto-update CV PDFs [skip ci]"
+            git push
+          fi
