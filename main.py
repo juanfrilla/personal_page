@@ -58,7 +58,8 @@ LABELS = {
 
 os.makedirs("rendercv_output", exist_ok=True)
 yaml_file = YAML_FILES[st.session_state.lang]
-output_pdf = f"rendercv_output/JuanFranMartin_{'English' if st.session_state.lang == 'en' else 'Spanish'}_CV.pdf"
+L = LABELS[st.session_state.lang]
+output_pdf = L["pdf_path"]
 
 
 def get_pdf_bytes(file_path):
@@ -83,7 +84,7 @@ def render_tags(techs_string):
 
 
 cv = load_cv_data(st.session_state.lang)
-L = LABELS[st.session_state.lang]
+
 
 if not cv:
     st.error("CV data not found.")
