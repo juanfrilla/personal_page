@@ -59,7 +59,7 @@ def get_pdf_bytes(file_path):
     path = Path(file_path)
     if path.exists():
         return path.read_bytes()
-    return None
+    return b""
 
 
 @st.cache_data
@@ -332,6 +332,6 @@ with col_btn:
         width="content",
     )
 
-#TODO quitar color negro en hover en el movil 
+# TODO quitar color negro en hover en el movil
 # TODO revisar cambiar de idioma en el movil
-#TODO poco mas
+# TODO poco mas
