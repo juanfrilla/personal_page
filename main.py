@@ -331,3 +331,7 @@ with col_btn:
         key=f"dl_btn_{st.session_state.lang}",
         width="content",
     )
+
+#TODO quitar color negro en hover en el movil 
+# TODO revisar cambiar de idioma en el movil
+#TODO poco mas

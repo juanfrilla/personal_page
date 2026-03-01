@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "*.yaml"
-      - "render_cvs.py"
 
 jobs:
   render:
@@ -31,19 +28,22 @@ jobs:
           # Si tu script render_cvs.py usa otras librerías, instálalas aquí
 
       - name: Run render script
-        run: python render_cvs.py
+        run: |
+          echo "running render_cvs command"
+          python render_cvs.py
 
       - name: Commit and Push PDFs
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          # Forzamos el guardado de la carpeta de salida
-          git add rendercv_output/*.pdf
+          
+          # El flag -f es la clave: fuerza a Git a añadir los archivos aunque estén en el .gitignore
+          git add -f rendercv_output/*.pdf
 
-          # Solo hacemos commit si realmente hubo cambios en los PDFs
+          # Verificamos si hay algo nuevo en el "stage" antes de hacer el commit
           if git diff --staged --quiet; then
-            echo "Sin cambios detectados en los PDFs."
+            echo "Sin cambios detectados en los PDFs respecto a la versión anterior."
           else
-            git commit -m "chore: auto-update CV PDFs [skip ci]"
+            git commit -m "update: CVs generados automáticamente [skip ci]"
             git push
           fi
