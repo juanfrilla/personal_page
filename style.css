@@ -1,15 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-.stApp { background-color: #ffffff; color: #1f2328; }
+/* --- 1. LIMPIEZA Y MARGEN SUPERIOR --- */
+header[data-testid="stHeader"], 
+[data-testid="stAppToolbar"],
+footer {
+    display: none !important;
+    visibility: hidden !important;
+}
 
+.stApp { 
+    background-color: #ffffff; 
+    color: #1f2328; 
+}
 
 .block-container {
     max-width: 1300px !important;
-    padding-top: 2rem !important;
+    padding-top: 5rem !important; /* Espacio para que no tape el contenido */
     padding-bottom: 5rem !important;
     margin: auto;
 }
 
+/* --- 2. TIPOGRAFÍA --- */
 html, body, [class*="css"], .stMarkdown, p, li, label {
     font-family: 'Inter', sans-serif !important;
     color: #444d56 !important;
@@ -26,12 +37,7 @@ h1 {
     margin-bottom: 0px !important;
 }
 
-h2, h3 {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 600 !important;
-    color: #1f2328 !important;
-}
-
+/* --- 3. SECCIONES Y TAGS --- */
 .section-title {
     font-family: 'JetBrains Mono', monospace !important;
     font-size: 0.9rem !important;
@@ -43,22 +49,6 @@ h2, h3 {
     padding-bottom: 8px !important;
     margin-top: 2.5rem !important;
     margin-bottom: 1.5rem !important;
-}
-
-.streamlit-expanderHeader {
-    font-family: 'Inter', sans-serif !important;
-    background-color: #f6f8fa !important;
-    border: 1px solid #d0d7de !important;
-    border-radius: 6px !important;
-    color: #1f2328 !important;
-    font-size: 1rem !important;
-}
-
-.streamlit-expanderContent {
-    background-color: #ffffff !important;
-    border: 1px solid #d0d7de !important;
-    border-top: none !important;
-    border-radius: 0 0 6px 6px !important;
 }
 
 .tag {
@@ -73,13 +63,27 @@ h2, h3 {
     font-family: 'JetBrains Mono', monospace !important;
 }
 
-.entry-meta {
-    color: #636c76 !important;
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 0.85rem !important;
+/* --- 4. SELECTOR DE IDIOMA (ADIÓS AL NEGRO) --- */
+div[data-testid="stSegmentedControl"] button[aria-checked="true"] {
+    background-color: #0969da !important;
+    color: white !important;
+    border-color: #0969da !important;
+    box-shadow: none !important;
 }
 
-/* Botones ligeramente más grandes */
+div[data-testid="stSegmentedControl"] button[aria-checked="false"] {
+    background-color: #f6f8fa !important;
+    color: #24292f !important;
+    border-color: #d0d7de !important;
+}
+
+div[data-testid="stSegmentedControl"] button:hover {
+    background-color: #ebf0f4 !important;
+    border-color: #afb8c1 !important;
+    color: #24292f !important;
+}
+
+/* --- 5. BOTÓN DOWNLOAD (TAL CUAL LO TENÍAS ANTES) --- */
 .stDownloadButton > button, .stButton > button {
     background-color: #f6f8fa !important;
     color: #24292f !important;
@@ -87,7 +91,7 @@ h2, h3 {
     border-radius: 6px !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 0.9rem !important;
-    padding: 0.5rem 1rem !important;
+    padding: 0.5rem 1rem !important; /* Restaurado el padding original */
     transition: 0.2s;
     width: auto;
 }
@@ -97,29 +101,15 @@ h2, h3 {
     border-color: #afb8c1 !important;
 }
 
-.contact-info {
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 0.95rem !important;
-    color: #0969da !important;
-    margin: 10px 0px;
-}
-
+/* --- 6. VARIOS --- */
 img { border-radius: 50%; border: 2px solid #d0d7de !important; }
-
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #ffffff; }
-::-webkit-scrollbar-thumb { background: #d0d7de; border-radius: 10px; }
-
 hr { border-color: #d0d7de !important; }
 
-#MainMenu, footer { visibility: hidden; }
-
+/* --- RESPONSIVE --- */
 @media (max-width: 800px) {
-    .block-container {
-        max-width: 95% !important;
-        padding: 1rem !important;
+    .block-container { 
+        max-width: 95% !important; 
+        padding-top: 4rem !important; 
     }
-    html, body, [class*="css"], .stMarkdown, p, li, label {
-        font-size: 1rem !important;
-    }
+    html, body, [class*="css"], .stMarkdown, p, li, label { font-size: 1rem !important; }
 }

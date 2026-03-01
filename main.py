@@ -5,24 +5,10 @@ import streamlit as st
 import yaml
 from language_detection import detect_browser_language
 
-# 1. Aseguramos que el idioma exista en session_state antes de usarlo
-if "lang" not in st.session_state:
-    # Intentamos detectar, si falla o es None, usamos "en" por defecto
-    try:
-        browser_lang = detect_browser_language()
-        st.session_state.lang = (
-            "es" if (browser_lang or "en").lower().startswith("es") else "en"
-        )
-    except Exception:
-        st.session_state.lang = "en"
-
-lang_key = st.session_state.get("lang", "en")
-
 YAML_FILES = {
     "en": "JuanFranMartin_English_CV.yaml",
     "es": "JuanFranMartin_Spanish_CV.yaml",
 }
-
 LABELS = {
     "en": {
         "about": "About Me",
@@ -55,6 +41,33 @@ LABELS = {
         "pdf_path": "./rendercv_output/JuanFranMartin_Spanish_CV.pdf",
     },
 }
+
+
+def is_mobile():
+    headers = st.context.headers
+    user_agent = headers.get("User-Agent", "")
+    mobile_keywords = ["Mobile", "Android", "iPhone", "iPad", "Windows Phone"]
+    return any(keyword in user_agent for keyword in mobile_keywords)
+
+
+if "lang" not in st.session_state:
+    detected_lang = "en"
+
+    if not is_mobile():
+        try:
+            browser_lang = detect_browser_language()
+            if browser_lang and str(browser_lang).lower().startswith("es"):
+                detected_lang = "es"
+        except Exception:
+            pass
+
+    st.session_state.lang = detected_lang
+
+if "lang_selector" not in st.session_state:
+    st.session_state.lang_selector = st.session_state.lang
+
+if st.session_state.get("lang") not in ["en", "es"]:
+    st.session_state.lang = "en"
 
 os.makedirs("rendercv_output", exist_ok=True)
 yaml_file = YAML_FILES[st.session_state.lang]
@@ -114,22 +127,28 @@ def local_css(file_name):
 
 local_css("style.css")
 
+
+def change_lang():
+    st.session_state.lang = st.session_state.lang_selector
+
+
 header_container = st.container()
 with header_container:
-    col_spacer, col_sw = st.columns([4, 1])
+    # En lugar de [4, 1], usamos columnas que se ajusten al contenido
+    # O mejor aún, una sola columna alineada a la derecha con CSS
+    col_text, col_sw = st.columns([3, 1])
+
     with col_sw:
-        selected_lang = st.segmented_control(
+        st.segmented_control(
             label="Lang",
             options=["en", "es"],
             format_func=lambda x: "EN" if x == "en" else "ES",
             selection_mode="single",
-            default=st.session_state.lang,
-            label_visibility="collapsed",
+            # El default ya no es necesario si usamos el key correctamente
             key="lang_selector",
+            on_change=change_lang,  # Esto sustituye al st.rerun() manual
+            label_visibility="collapsed",
         )
-        if selected_lang != st.session_state.lang:
-            st.session_state.lang = selected_lang
-            st.rerun()
 
 
 col_text, col_photo = st.columns([4, 1])
