@@ -319,19 +319,27 @@ if lang_key and lang_key in sections:
         cols[idx].markdown(f"**{lang_item}**")
 st.markdown("---")
 
+# 1. Obtenemos los bytes primero
+pdf_bits = get_pdf_bytes(output_pdf)
+
+# 2. Creamos las columnas para el centrado
 _, col_btn, _ = st.columns([1, 2, 1])
 
 with col_btn:
-    st.download_button(
-        label=L["download"],
-        data=get_pdf_bytes(output_pdf),
-        file_name=os.path.basename(output_pdf),
-        mime="application/pdf",
-        type="primary",
-        key=f"dl_btn_{st.session_state.lang}",
-        width="content",
-    )
-
+    # 3. Solo mostramos el botón si pdf_bits NO es None
+    if pdf_bits is not None:
+        st.download_button(
+            label=L["download"],
+            data=pdf_bits,  # Ahora estamos seguros de que no es None
+            file_name=os.path.basename(output_pdf),
+            mime="application/pdf",
+            type="primary",
+            key=f"dl_btn_{st.session_state.lang}",
+            use_container_width=True,
+        )
+    else:
+        # Mensaje amigable si el archivo no se encuentra
+        st.warning(L.get("no_pdf", "PDF no disponible"))
 # TODO quitar color negro en hover en el movil
 # TODO revisar cambiar de idioma en el movil
 # TODO poco mas
