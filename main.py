@@ -5,11 +5,18 @@ import streamlit as st
 import yaml
 from language_detection import detect_browser_language
 
+# 1. Aseguramos que el idioma exista en session_state antes de usarlo
 if "lang" not in st.session_state:
-    browser_lang = detect_browser_language()
-    st.session_state.lang = (
-        "es" if (browser_lang or "en").lower().startswith("es") else "en"
-    )
+    # Intentamos detectar, si falla o es None, usamos "en" por defecto
+    try:
+        browser_lang = detect_browser_language()
+        st.session_state.lang = (
+            "es" if (browser_lang or "en").lower().startswith("es") else "en"
+        )
+    except Exception:
+        st.session_state.lang = "en"
+
+lang_key = st.session_state.get("lang", "en")
 
 YAML_FILES = {
     "en": "JuanFranMartin_English_CV.yaml",
