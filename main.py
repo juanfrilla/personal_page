@@ -77,9 +77,9 @@ output_pdf = L["pdf_path"]
 
 def get_pdf_bytes(file_path):
     path = Path(file_path)
-    if path.exists():
+    if path.exists() and path.stat().st_size > 0:
         return path.read_bytes()
-    return b""
+    return None
 
 
 @st.cache_data
