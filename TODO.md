@@ -1,0 +1,1 @@
+# TODO quitar color negro en hover en el movil

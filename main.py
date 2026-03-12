@@ -234,6 +234,4 @@ with col_btn:
     else:
         st.warning(L.get("no_pdf", "PDF no disponible"))
 
-# TODO quitar color negro en hover en el movil
-# TODO revisar cambiar de idioma en el movil
-# TODO poco mas
+
