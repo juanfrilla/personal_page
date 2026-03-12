@@ -49,5 +49,5 @@ jobs:
             echo "Sin cambios detectados en los PDFs respecto a la versión anterior."
           else
             git commit -m "update: CVs generados automáticamente [skip ci]"
-            git push
+            git push origin main
           fi
