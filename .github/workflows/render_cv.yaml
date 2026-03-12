@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install "rendercv[full]"
+          pip install "rendercv[full]==2.6"
           # Si tu script render_cvs.py usa otras librerías, instálalas aquí
 
       - name: Run render script
