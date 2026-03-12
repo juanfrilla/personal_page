@@ -23,7 +23,7 @@ LABELS = {
         "new_lang": "es",
         "present": "present",
         "tech": "Tech Stack",
-        "pdf_path": "./rendercv_output/JuanFranMartin_English_CV.pdf",
+        "pdf_path": "./rendercv_output_prod/JuanFranMartin_English_CV.pdf",
     },
     "es": {
         "about": "Sobre mí",
@@ -38,7 +38,7 @@ LABELS = {
         "new_lang": "en",
         "present": "presente",
         "tech": "Tecnologías",
-        "pdf_path": "./rendercv_output/JuanFranMartin_Spanish_CV.pdf",
+        "pdf_path": "./rendercv_output_prod/JuanFranMartin_Spanish_CV.pdf",
     },
 }
 
@@ -69,7 +69,7 @@ if "lang_selector" not in st.session_state:
 if st.session_state.get("lang") not in ["en", "es"]:
     st.session_state.lang = "en"
 
-os.makedirs("rendercv_output", exist_ok=True)
+os.makedirs("rendercv_output_prod", exist_ok=True)
 yaml_file = YAML_FILES[st.session_state.lang]
 L = LABELS[st.session_state.lang]
 output_pdf = L["pdf_path"]
@@ -233,5 +233,3 @@ with col_btn:
         )
     else:
         st.warning(L.get("no_pdf", "PDF no disponible"))
-
-
