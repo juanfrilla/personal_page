@@ -41,7 +41,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
           # El flag -f es la clave: fuerza a Git a añadir los archivos aunque estén en el .gitignore
-          git add -f rendercv_output/*.pdf
+          git add -f rendercv_output_prod/*.pdf
 
           # Verificamos si hay algo nuevo en el "stage" antes de hacer el commit
           if git diff --staged --quiet; then
