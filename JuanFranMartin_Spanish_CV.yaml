@@ -63,7 +63,8 @@ cv:
         highlights:
           - Integré y mantuve spiders para obtener datos legales de sitios web gubernamentales en España, Portugal y LATAM.
           - Mantuve un proyecto legacy, escrito en el framework grails (groovy).
-          - Configuré Selenium-Grid para escalar navegadores y un Servicio de Tor (una red de proxies anonimizada) en AWS EC2.
+          - Configuré Selenium-Grid para escalar navegadores 
+          - Configuré un Servicio de Tor (una red de proxies anonimizada) en AWS EC2.
           - Diseñé sistemas para rotar proxies y headers y evitar baneos.
           - Extraje informacion del DOM, APIs y diseñé un sistema de extracción para cualquier archivo de texto (PDF, DOC o DOCX).
           - Usé AWS S3 para almacenamiento de los PDF.

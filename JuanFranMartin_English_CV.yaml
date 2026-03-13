@@ -62,7 +62,8 @@ cv:
         highlights:
           - Integrated and maintained spiders to obtain legal data from government websites in Spain, Portugal and LATAM.
           - Maintained a legacy project, written in the grails framework (groovy).
-          - Configured Selenium Grid on AWS EC2 to scale the browser infrastructure, integrating a Tor Service proxy network for anonymized web scraping.
+          - Configured Selenium Grid on AWS EC2 to scale the browser infrastructure.
+          - Integrated a Tor Service proxy network for anonymized web scraping.
           - Engineered a rotating proxies/headers system to avoid bans.
           - Extracted data from the DOM, APIs, and blueprinted a dedicated system for parsing information from PDF, DOC, and DOCX files.
           - Used AWS S3 for PDF storage.
