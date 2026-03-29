@@ -160,7 +160,11 @@ with col_text:
         f"📍 {cv.get('location', '')} &nbsp; | &nbsp; ✉️ {cv.get('email', '')}"
     )
     for sn in cv.get("social_networks", []):
-        contact_html += f" &nbsp; | &nbsp; [{sn['network']}](https://{sn['network'].lower()}.com/{sn['username']})"
+        network_name = sn["network"].lower()
+        username = sn["username"]
+        prefix = "@" if "youtube" in network_name else ""
+        url = f"https://{network_name}.com/{prefix}{username}"
+        contact_html += f" &nbsp; | &nbsp; [{sn['network']}]({url})"
     st.markdown(contact_html)
 
 with col_photo:
