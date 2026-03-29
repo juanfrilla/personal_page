@@ -161,7 +161,7 @@ with col_text:
     )
     for sn in cv.get("social_networks", []):
         network_name = sn["network"].lower()
-        username = sn["username"]
+        username = sn["username"].lstrip("@")
         prefix = "@" if "youtube" in network_name else ""
         url = f"https://{network_name}.com/{prefix}{username}"
         contact_html += f" &nbsp; | &nbsp; [{sn['network']}]({url})"
