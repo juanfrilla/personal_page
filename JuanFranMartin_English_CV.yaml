@@ -13,6 +13,8 @@ cv:
       username: jfmozaga
     - network: GitHub
       username: juanfrilla
+    - network: Youtube
+      username: "@jfmozaga"
   custom_connections:
   sections:
     summary:
