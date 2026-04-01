@@ -70,7 +70,7 @@ cv:
           - Extracted data from the DOM, APIs, and blueprinted a dedicated system for parsing information from PDF, DOC, and DOCX files.
           - Used AWS S3 for PDF storage.
           - Implemented the scraping project's CI/CD with Gitlab CI via SSH.
-          - "Technologies: Scrapy, Selenium Grid, Grails, MongoDB, Git, Linux, Docker, Gitlab CI, Amazon Web Services (AWS)"
+          - "Technologies: Scrapy, Selenium Grid, Tomcat, Java, Groovy, Grails, MongoDB, SQL, Git, Linux, Docker, Gitlab CI, Amazon Web Services (AWS)"
       - company: TuCalendi
         position: Back-end Developer
         date:
