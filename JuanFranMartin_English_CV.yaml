@@ -50,7 +50,8 @@ cv:
           - Reverse engineered complex javascript using DevTools to automate MFA/2FA/JWT/OAUTH2 authentication flows.
           - Configured Selenium Grid and Scrapoxy (proxy network), on AWS EC2 with Docker, and Github Actions via SSH.
           - Conected Playwright with Selenium Grid to support browser-based distributed and parallelized scraping tasks.
-          - I used AWS, that is, Lambda with Serverless architecture for scalable scraping, CloudWatch for observability, and S3 for CSV and JSON storage.          - Implemented advanced bypass solutions for hCaptcha, reCAPTCHA, and anti-bot systems.
+          - I used AWS, that is, Lambda with Serverless architecture for scalable scraping, CloudWatch for observability, and S3 for CSV and JSON storage.
+          - Implemented advanced bypass solutions for hCaptcha, reCAPTCHA, and anti-bot systems.
           - Extracted information from the DOM, APIs, or PDFs.
           - "Technologies: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
             Playwright, Pandas, Redis, Pytest"
@@ -67,10 +68,10 @@ cv:
           - Configured Selenium Grid on AWS EC2 to scale the browser infrastructure.
           - Integrated a Tor Service proxy network for anonymized web scraping.
           - Engineered a rotating proxies/headers system to avoid bans.
-          - Extracted data from the DOM, APIs, and blueprinted a dedicated system for parsing information from PDF, DOC, and DOCX files.
+          - Extracted data from the DOM, APIs, and created a system for parsing information from PDF, DOC, and DOCX files.
           - Used AWS S3 for PDF storage.
           - Implemented the scraping project's CI/CD with Gitlab CI via SSH.
-          - "Technologies: Scrapy, Selenium Grid, Tomcat, Java, Groovy, Grails, MongoDB, SQL, Git, Linux, Docker, Gitlab CI, Amazon Web Services (AWS)"
+          - "Technologies: Scrapy, Selenium Grid, Tomcat, Java, Groovy, Grails, MongoDB, SQL, Git, Linux, Docker, Gitlab CI, AWS"
       - company: TuCalendi
         position: Back-end Developer
         date:
@@ -81,7 +82,7 @@ cv:
         highlights:
           - Migrated and deployed an API from PHP (Codeigniter) to Python, using the FastAPI framework.
           - Designed and developed conversational voice applications for Amazon Alexa.
-          - "Technologies: FastAPI (Python framework), MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
+          - "Technologies: FastAPI, MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
       - company: Tías Town Hall
         position: Computer Technisian
         date:
