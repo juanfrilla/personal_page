@@ -38,6 +38,17 @@ cv:
           - "GPA: 7/10"
           - "Technologies: Java, Matlab, C, Assembly, MySQL"
     experience:
+      - company: Quales (Insud Pharma client)
+        position: Web Scraping Engineer
+        date:
+        start_date: 2026-07
+        end_date: 2026-09
+        location: Madrid, Spain (Remote)
+        summary:
+        highlights:
+          - Planned the scraping project by defining two ingestion workflows; on-demand, via an API developed with FastAPI, and scheduled execution using cron jobs.
+          - Coordinated with the various teams and business units maintaining scraping projects, aligning technical criteria and avoiding duplication of effort.
+          - Worked closely with a Data Engineer specializing in Snowflake.
       - company: Vumi.io
         position: Web Scraping Engineer
         date:
@@ -80,7 +91,7 @@ cv:
         location: Tenerife, Spain (Remote)
         summary:
         highlights:
-          - Migrated and deployed an API from PHP (Codeigniter) to Python, using the FastAPI framework.
+          - Migrated and deployed an API from PHP (Codeigniter) to Python, using the FastAPI framework in containerized Docker environments.
           - Designed and developed conversational voice applications for Amazon Alexa.
           - "Technologies: FastAPI, MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
       - company: Tías Town Hall
