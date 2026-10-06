@@ -38,17 +38,6 @@ cv:
           - "Nota: 7/10"
           - "Tecnologías: Java, Matlab, C, Ensamblador, MySQL"
     experiencia:
-      - company: Quales (cliente Insud Pharma)
-        position: Ingeniero de Web Scraping
-        date:
-        start_date: 2026-07
-        end_date: 2026-09
-        location: Madrid, España (Remoto)
-        summary:
-        highlights:
-          - Planifiqué el proyecto de scraping definiendo dos flujos de ingesta; bajo demanda, mediante una API desarrollada con FastAPI, y ejecución programada mediante cronjobs.
-          - Coordiné con los distintos equipos y unidades de negocio que mantenían proyectos de scraping, alineando criterios técnicos y evitando duplicación de esfuerzos.
-          - Trabajé mano a mano con un Data Engineer experto en Snowflake.
       - company: Vumi.io
         position: Ingeniero de Web Scraping
         date:
