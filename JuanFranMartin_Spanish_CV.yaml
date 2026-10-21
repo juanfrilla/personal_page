@@ -5,7 +5,7 @@ cv:
   headline: Ingeniero de Software
   location: Teguise, Islas Canarias, España
   email: juanframaro@gmail.com
-  photo: ./pIMG_9795.jpg
+  photo: ./pic.jpg
   phone: "+34 683593896"
   website: https://juanfrilla.github.io/
   social_networks:
@@ -80,7 +80,7 @@ cv:
         location: Tenerife, España (Remoto)
         summary:
         highlights:
-          - Migré y desplegué una API desde PHP (Codeigniter) a Python, utilizando el framework FastAPI.
+          - Migré y desplegué una API desde PHP (Codeigniter) a Python, utilizando el framework FastAPI containerizado con docker.
           - Diseñé y desarrollé aplicaciones de voz conversacionales para Amazon Alexa.
           - "Tecnologías: FastAPI, MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
       - company: Ayuntamiento de Tías
@@ -121,7 +121,7 @@ design:
     connections:
       phone_number_format: international
       show_icons: true
-    photo_width: 2.9cm # Foto ligeramente más pequeña
+    photo_width: 4.5cm # Foto ligeramente más pequeña
     photo_position: left
     space_below_name: 0.15cm
     space_below_headline: 0.15cm
