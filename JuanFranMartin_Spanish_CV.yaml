@@ -50,7 +50,7 @@ cv:
           - Configuré Selenium Grid y Scrapoxy (red de proxies) en AWS EC2 utilizando Docker, además de implementar su CI/CD en GitHub Actions mediante SSH.
           - Integré Playwright con Selenium Grid para ejecutar tareas de scraping distribuidas y paralelizadas basadas en navegador.
           - Utilicé AWS Lambda para la ejecución de scrapers, CloudWatch para la observabilidad y S3 para el almacenamiento de archivos en formato CSV y JSON.
-          - Implementé soluciones avanzadas para eludir mecanismos de protección como hCaptcha, reCAPTCHA y Cloudflare.
+          - Implementé bypasses a escala para hCaptcha, reCAPTCHA v3 Enterprise, Cloudflare, Akamai o Imperva
           - Extraje información a partir del DOM, APIs o documentos PDF.
           - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
             Playwright, Pandas, Redis, Pytest"
