@@ -18,16 +18,14 @@ cv:
   custom_connections:
   sections:
     sumario:
-      - Ingeniero de software especializado en web scraping y desarrollo back-end. Experiencia en AWS, CI/CD y bases de datos SQL/NoSQL, además de evasiones anti-bot avanzadas. Actualmente, estoy ampliando mi experiencia en ingeniería inversa de JavaScript complejo para abordar código de sitios web altamente ofuscados.
-    educación:
+      - Cuento con experiencia en web scraping (sistemas anti-bot e ingeniería inversa basada en navegadores) y desarrollo backend. Sigo estudiando la desofuscación compleja de JavaScript (protecciones basadas en máquinas virtuales o AST de Babel).
+    education:
       - institution: Escuela de Organización Industrial (EOI)
         area: en Programación Web Full-Stack
         degree: Bootcamp
         start_date: 2021-09
         end_date: 2021-12
         location: Madrid, España (Remoto)
-        highlights:
-          - "Tecnologías: HTML, CSS, JavaScript, Node, Go, MySQL, MongoDB, Docker, Linux, CI/CD, Git, DigitalOcean"
       - institution: Universidad de Las Palmas de Gran Canaria (ULPGC)
         area: en Ingeniería en Telecommunicaciones
         degree: Grado
@@ -37,6 +35,7 @@ cv:
         highlights:
           - "Nota: 7/10"
           - "Tecnologías: Java, Matlab, C, Ensamblador, MySQL"
+          - "Proyecto final: Sistema de clasificación de sonidos atmosféricos mediante Machine Learning y localización de la dirección de llegada (DOA)."
     experiencia:
       - company: Vumi.io
         position: Ingeniero de Web Scraping
@@ -46,13 +45,13 @@ cv:
         location: Asturias, España (Remoto)
         summary:
         highlights:
-          - Integré y mantuve scrapers para obtener datos financieros de bancos o brókers.
-          - Realicé ingeniería inversa de JavaScript complejo con DevTools para automatizar los flujos de autenticación MFA/2FA/JWT/OAUTH2.
-          - Configuré Selenium Grid y Scrapoxy (red de proxies interna) en AWS EC2 con Docker y Github Actions mediante SSH.
-          - Conecté Playwright con Selenium Grid para soportar tareas de scraping distribuidas y paralelizadas.
-          - Usé AWS, esto es Lambda con arquitectura Serverless para scraping escalable, CloudWatch para la observabilidad y S3 para el almacenamiento de CSV y JSON.
-          - Implementé soluciones avanzadas de bypass para hCaptcha, reCAPTCHA y sistemas antibots.
-          - Extraje información del DOM, de APIs o PDFs.
+          - Integré y mantuve un sistema compuesto por ~50+ scrapers (~900+ solicitudes diarias) para extraer datos financieros de bancos y brokers, consolidando una base de datos de ~5+ GB.
+          - Realicé ingeniería inversa de código JavaScript complejo mediante DevTools para automatizar flujos de autenticación (MFA/2FA, JWT y OAuth2) a través de solicitudes HTTP, evitando así la sobrecarga que supone el uso de un navegador.
+          - Configuré Selenium Grid y Scrapoxy (red de proxies) en AWS EC2 utilizando Docker, además de implementar su CI/CD en GitHub Actions mediante SSH.
+          - Integré Playwright con Selenium Grid para ejecutar tareas de scraping distribuidas y paralelizadas basadas en navegador.
+          - Utilicé AWS Lambda para la ejecución de scrapers, CloudWatch para la observabilidad y S3 para el almacenamiento de archivos en formato CSV y JSON.
+          - Implementé soluciones avanzadas para eludir mecanismos de protección como hCaptcha, reCAPTCHA y Cloudflare.
+          - Extraje información a partir del DOM, APIs o documentos PDF.
           - "Tecnologías: Burpsuite, Devtools, Scrapoxy, Selenium Grid, Linux, Docker, Git, AWS, PostgreSQL, Github Actions,
             Playwright, Pandas, Redis, Pytest"
       - company: Tirant Lo Blanch
@@ -63,14 +62,14 @@ cv:
         location: Valencia, España (Remoto)
         summary:
         highlights:
-          - Integré y mantuve spiders para obtener datos legales de sitios web gubernamentales en España, Portugal y LATAM.
-          - Mantuve un proyecto legacy, escrito en el framework grails (groovy).
-          - Configuré Selenium-Grid para escalar navegadores
-          - Configuré un Servicio de Tor (una red de proxies anonimizada) en AWS EC2.
-          - Diseñé sistemas para rotar proxies y headers y evitar baneos.
-          - Extraje informacion del DOM, APIs y diseñé un sistema de extracción para cualquier archivo de texto (PDF, DOC o DOCX).
-          - Usé AWS S3 para almacenamiento de los PDF.
-          - Implementé el CI/CD del proyecto de scraping con Gitlab CI via SSH.
+          - Integré y mantuve un sistema de ~700+ spiders (~70K+ peticiones diarias) para extraer datos jurídicos de sitios web gubernamentales en España, Portugal y Latinoamérica, consolidando una base de datos de ~10+ TB.
+          - Mantuve un proyecto heredado (legacy) desarrollado con el framework Grails (Groovy).
+          - Configuré Selenium Grid en AWS EC2 para escalar la infraestructura de navegadores.
+          - Integré una red de proxies basada en el servicio Tor para realizar web scraping de forma anónima.
+          - Diseñé un sistema de rotación de proxies y cabeceras (headers) para evitar bloqueos.
+          - Extraje datos del DOM y de APIs, y diseñé un sistema específico para procesar y extraer información de archivos PDF, DOC y DOCX.
+          - Utilicé AWS S3 para el almacenamiento de archivos PDF.
+          - Implementé un flujo de CI/CD para el proyecto de scraping mediante GitLab CI a través de SSH.
           - "Tecnologías: Scrapy, Selenium Grid, Tomcat, Java, Groovy, Grails, MongoDB, SQL, Git, Linux, Docker, Gitlab CI, AWS"
       - company: TuCalendi
         position: Desarrollador Back-end
@@ -80,7 +79,7 @@ cv:
         location: Tenerife, España (Remoto)
         summary:
         highlights:
-          - Migré y desplegué una API desde PHP (Codeigniter) a Python, utilizando el framework FastAPI containerizado con docker.
+          - Migré y desplegué una API heredada de PHP (CodeIgniter) a Python (FastAPI) en entornos contenedorizados con Docker, gestionando 50+ llamadas concurrentes con alta disponibilidad.
           - Diseñé y desarrollé aplicaciones de voz conversacionales para Amazon Alexa.
           - "Tecnologías: FastAPI, MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
       - company: Ayuntamiento de Tías
@@ -91,26 +90,12 @@ cv:
         location: Lanzarote, España
         summary:
         highlights:
-          - Ofrecí soporte técnico a los empleados y ayuda en la automatización de descargas para el catastro.
-          - Actualicé ordenadores a Windows 10 e instalé Microsoft 365 para la totalidad de la plantilla del Ayuntamiento
-      - company: Universidad de Las Palmas de Gran Canaria
-        position: Proyecto de final de carrera
-        date:
-        start_date: 2018-02
-        end_date: 2019-07
-        location: Gran Canaria, España
-        summary:
-        highlights:
-          - Creé un sistema para clasificar eventos sonoros atmosféricos combinando técnicas de Machine Learning y Dirección de Procedencia, usando Matlab.
+          - Soporte técnico a los empleados y automatización de tareas catastrales.
     lenguajes:
       - "Español: Nativo"
       - "Inglés: Competencia profesional completa (C1)"
 design:
   theme: engineeringresumes
-  templates:
-    education_entry:
-      main_column: |-
-        **INSTITUTION**, DEGREE AREA -- LOCATION
   page:
     size: a4
     top_margin: 1cm # Bajamos de 1.2 a 1cm
@@ -179,7 +164,7 @@ locale:
   #   - November
   #   - December
 settings:
-  current_date: "2026-02-27"
+  current_date: "2026-10-22"
   render_command:
     design:
     locale:

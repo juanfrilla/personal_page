@@ -35,8 +35,8 @@ cv:
         location: Gran Canaria, Spain
         highlights:
           - "GPA: 7/10"
-          - "Final Project: Atmospheric sound classification system using ML and Direction of Arrival (Matlab)."
           - "Technologies: Java, Matlab, C, Assembly, MySQL"
+          - "Final Project: Atmospheric sound classification system using ML and Direction of Arrival."
     experience:
       - company: Vumi.io
         position: Web Scraping Engineer
@@ -46,7 +46,7 @@ cv:
         location: Asturias, Spain (Remote)
         summary:
         highlights:
-          - Integrated and maintained a system with ~50+ scrapers (~900+ daily requests) to extract financial data from banks and brokers.
+          - Integrated and maintained a system with ~50+ scrapers (~900+ daily requests) to extract financial data from banks and brokers, growing a database of ~5 GB+.
           - Reverse-engineered complex JavaScript using DevTools to automate MFA/2FA, JWT, and OAuth2 authentication flows via pure HTTP requests, avoiding browser overhead.
           - Configured Selenium Grid and Scrapoxy (proxy network), on AWS EC2 with Docker, and Github Actions via SSH.
           - Conected Playwright with Selenium Grid to support browser-based distributed and parallelized scraping tasks.
@@ -63,7 +63,7 @@ cv:
         location: Valencia, Spain (Remote)
         summary:
         highlights:
-          - Integrated and maintained a system with ~700+ spiders (~10K+ daily requests) to extract legal data from government websites across Spain, Portugal, and LATAM.
+          - Integrated and maintained a system of ~700+ spiders (~70K+ daily requests) extracting legal data from government websites across Spain, Portugal, and LATAM, growing a database of ~10+ TB.
           - Maintained a legacy project, written in the grails framework (groovy).
           - Configured Selenium Grid on AWS EC2 to scale the browser infrastructure.
           - Integrated a Tor Service proxy network for anonymized web scraping.
@@ -80,7 +80,7 @@ cv:
         location: Tenerife, Spain (Remote)
         summary:
         highlights:
-          - Migrated and deployed a legacy PHP (CodeIgniter) API to Python (FastAPI) in Docker containerized environments, handling ~50+ concurrent clients with high availability.
+          - Migrated and deployed a legacy PHP (CodeIgniter) API to Python (FastAPI) in Docker containerized environments, handling ~50+ concurrent calls with high availability.
           - Designed and developed conversational voice applications for Amazon Alexa.
           - "Technologies: FastAPI, MariaDB, Linux, Git, Plesk, PHP, Docker, Github Actions, Postman, Pytest"
       - company: Tías Town Hall
@@ -91,7 +91,7 @@ cv:
         location: Lanzarote, Spain
         summary:
         highlights:
-          - Technical support to employees and automation of cadastral downloads.
+          - Technical support to employees and automation of cadastral tasks.
     languages:
       - "Spanish: Native"
       - "English: Professional Working Proficiency (C1)"
