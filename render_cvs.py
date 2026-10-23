@@ -25,14 +25,14 @@ else:
             "render",
             "JuanFranMartin_English_CV.yaml",
             "--pdf-path",
-            "./rendercv_output_local/JuanFranMartin_English_CV.pdf",
+            "./rendercv_output_prod/JuanFranMartin_English_CV.pdf",
         ],
         [
             "rendercv",
             "render",
             "JuanFranMartin_Spanish_CV.yaml",
             "--pdf-path",
-            "./rendercv_output_local/JuanFranMartin_Spanish_CV.pdf",
+            "./rendercv_output_prod/JuanFranMartin_Spanish_CV.pdf",
         ],
     ]
 
